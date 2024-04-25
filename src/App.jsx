@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -8,28 +8,10 @@ const App = () => {
   });
 
   const handleInputChange = (event) => {
-    switch (event.target.name) {
-      case "name":
-        setFormData({
-          ...formData,
-          name: event.target.value,
-        });
-        break;
-      case "email":
-        setFormData({
-          ...formData,
-          email: event.target.value,
-        });
-        break;
-      case "phone":
-        setFormData({
-          ...formData,
-          phone: event.target.value,
-        });
-        break;
-      default:
-        throw new Error("Unknown input field");
-    }
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleOnSubmit = (event) => {
